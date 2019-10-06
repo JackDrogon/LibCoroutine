@@ -8,28 +8,29 @@
 
 class Scheduler;
 
-class Fiber {
+class Fiber
+{
 public:
 	typedef void (*Func)(Fiber *);
 	friend class Scheduler;
-	enum Status { kDead, kReady, kRunning, kSuspend };
+	enum class Status { kDead, kReady, kRunning, kSuspend };
 	using Event = std::function<void()>;
 
-	Fiber(Scheduler& scheduler, Event event);
+	Fiber(Scheduler &scheduler, Event event);
 	~Fiber();
 
 	void Resume();
 	bool Status();
 
 private:
-	uint64_t fid_;
-	Scheduler& scheduler_;
-	Event event_;
 	enum Status status_;
+	uint64_t fid_;
+	Scheduler &scheduler_;
+	Event event_;
 	ucontext_t context_;
-	ucontext_t* main_context_;
+	ucontext_t *main_context_;
 	Func main_;
-	
+
 	const static int STACK_SIZE = 4096;
 	char stack_[STACK_SIZE];
 

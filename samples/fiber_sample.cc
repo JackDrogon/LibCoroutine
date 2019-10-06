@@ -41,7 +41,4 @@ void test()
 	}
 }
 
-int main()
-{
-	test();
-}
+int main() { test(); }
