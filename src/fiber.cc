@@ -19,6 +19,7 @@ bool Fiber::Status() { return status_ != Status::kDead; }
 void Fiber::Resume()
 {
 	assert(scheduler_.current_fid_ == 0);
+
 	switch (status_) {
 	case Status::kReady:
 		getcontext(&context_);
@@ -28,10 +29,13 @@ void Fiber::Resume()
 		context_.uc_link = main_context_;
 		status_ = Status::kRunning;
 		makecontext(&context_, (void (*)())main_, 1, this);
+		[[fallthrough]];
+
 	case Status::kSuspend:
 		scheduler_.current_fid_ = fid_;
 		swapcontext(main_context_, &context_);
 		break;
+
 	default:
 		assert(0);
 	}
