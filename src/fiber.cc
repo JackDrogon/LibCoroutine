@@ -36,6 +36,12 @@ void Fiber::Resume()
 		swapcontext(main_context_, &context_);
 		break;
 
+	case Status::kRunning:
+		[[fallthrough]];
+
+	case Status::kDead:
+		[[fallthrough]];
+
 	default:
 		assert(0);
 	}
