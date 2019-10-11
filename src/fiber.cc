@@ -5,7 +5,7 @@
 #include "scheduler.h"
 
 Fiber::Fiber(Scheduler &scheduler, Event event)
-    : scheduler_(scheduler), event_(event), status_(Status::kReady)
+    : status_(Status::kReady), scheduler_(scheduler), event_(event)
 {
 	assert(event != nullptr);
 
@@ -28,7 +28,8 @@ void Fiber::Resume()
 		context_.uc_stack.ss_flags = 0;
 		context_.uc_link = main_context_;
 		status_ = Status::kRunning;
-		makecontext(&context_, (void (*)())main_, 1, this);
+		makecontext(&context_, reinterpret_cast<void (*)()>(main_), 1,
+			    this);
 		[[fallthrough]];
 
 	case Status::kSuspend:
