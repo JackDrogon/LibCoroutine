@@ -9,7 +9,7 @@
 CC       := g
 CFLAGS   := -Weverything
 CXX      := g++
-CXXFLAGS := -Weverything -std=c++1y
+CXXFLAGS := -Iinclude -Weverything -std=c++17 -Wno-reserved-id-macro -Wno-c++98-compat -Wno-missing-prototypes -Wno-padded -Wno-deprecated-declarations
 LD       := g++
 LDFLAGS  :=
 
@@ -22,8 +22,8 @@ else
 endif
 
 
-TARGET := fiber_test
-OBJS   := fiber_test.o fiber.o scheduler.o
+TARGET := fiber_sample
+OBJS   := samples/fiber_sample.o src/fiber.o src/scheduler.o
 
 
 all: $(TARGET)
