@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Scheduler sche;
+static Scheduler sche;
 
 void foo()
 {
@@ -29,7 +29,7 @@ void bar()
 	cout << "bar" << endl;
 }
 
-void test()
+void run()
 {
 	Fiber f1(sche, foo);
 	Fiber f2(sche, bar);
@@ -41,4 +41,4 @@ void test()
 	}
 }
 
-int main() { test(); }
+int main() { run(); }
