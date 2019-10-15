@@ -24,7 +24,7 @@ void Fiber::Resume()
 	case Status::kReady:
 		getcontext(&context_);
 		context_.uc_stack.ss_sp = stack_;
-		context_.uc_stack.ss_size = STACK_SIZE;
+		context_.uc_stack.ss_size = kStackSize;
 		context_.uc_stack.ss_flags = 0;
 		context_.uc_link = main_context_;
 		status_ = Status::kRunning;
@@ -48,4 +48,4 @@ void Fiber::Resume()
 	}
 }
 
-void Fiber::Run() { event_(); }
+void Fiber::run() { event_(); }
