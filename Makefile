@@ -32,8 +32,8 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
 
-src/fiber.cc: include/fiber.hh
-src/scheduler.cc: include/scheduler.hh include/fiber.hh
+src/fiber.cc: include/fiber.hh include/common.hh
+src/scheduler.cc: include/scheduler.hh include/fiber.hh include/common.hh
 
 
 # $(OBJS): %.o : %.cc

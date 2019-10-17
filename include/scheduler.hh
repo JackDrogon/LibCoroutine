@@ -4,7 +4,10 @@
 
 #include <unordered_map>
 #include <memory>
+
 #include <ucontext.h>
+
+#include "common.hh"
 
 // ThreadLocal
 
@@ -15,6 +18,10 @@ class Scheduler
 public:
 	friend class Fiber;
 	Scheduler();
+	~Scheduler() = default;
+
+	COROUTINE_DISALLOW_COPY_AND_ASSIGN(Scheduler);
+
 	const Fiber *Current();
 	void Yield();
 	void RemoveFiber(Fiber *fiber);
