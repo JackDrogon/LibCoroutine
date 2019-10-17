@@ -1,6 +1,7 @@
 #include <iostream>
-#include "fiber.h"
-#include "scheduler.h"
+
+#include "fiber.hh"
+#include "scheduler.hh"
 
 using namespace std;
 
