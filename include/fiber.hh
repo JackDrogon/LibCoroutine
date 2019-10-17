@@ -5,6 +5,8 @@
 #include <functional>
 #include <ucontext.h>
 
+#include "common.hh"
+
 class Scheduler;
 
 class Fiber
@@ -17,6 +19,7 @@ public:
 
 	Fiber(Scheduler &scheduler, Event event);
 	~Fiber();
+	COROUTINE_DISALLOW_COPY_AND_ASSIGN(Fiber);
 
 	void Resume();
 	bool Status();
