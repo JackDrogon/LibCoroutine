@@ -27,12 +27,12 @@ public:
 	void RemoveFiber(Fiber *fiber);
 
 private:
+	void addFiber(Fiber *fiber);
+	static void main(Fiber *fiber);
+
+private:
 	std::unordered_map<uint64_t, Fiber *> fibers_;
 	uint64_t fid_;
 	uint64_t current_fid_;
 	ucontext_t main_context_;
-
-	void AddFiber(Fiber *fiber);
-
-	static void Main(Fiber *fiber);
 };

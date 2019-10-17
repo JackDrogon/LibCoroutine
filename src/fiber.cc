@@ -9,7 +9,7 @@ Fiber::Fiber(Scheduler &scheduler, Event event)
 {
 	assert(event != nullptr);
 
-	scheduler_.AddFiber(this);
+	scheduler_.addFiber(this);
 }
 
 Fiber::~Fiber() { scheduler_.RemoveFiber(this); }
