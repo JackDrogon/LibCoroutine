@@ -1,3 +1,7 @@
 1. 在osx下面有点问题
 2. 调试比较麻烦，增加调试部分，stack追踪
 3. channel
+4. pimpl
+5. lock
+6. work steal queue
+7. process/machine
