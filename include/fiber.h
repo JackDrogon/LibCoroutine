@@ -1,5 +1,4 @@
-#ifndef FIBRT_H_
-#define FIBRT_H_
+#pragma once
 
 #define _XOPEN_SOURCE
 
@@ -39,5 +38,3 @@ private:
 	constexpr static int kStackSize = 4096;
 	char stack_[kStackSize];
 };
-
-#endif // FIBRT_H_

@@ -1,5 +1,4 @@
-#ifndef SCHEDULER_H_
-#define SCHEDULER_H_
+#pragma once
 
 #define _XOPEN_SOURCE
 
@@ -30,5 +29,3 @@ private:
 
 	static void Main(Fiber *fiber);
 };
-
-#endif // SCHEDULER_H_
