@@ -1,8 +1,9 @@
-#include "scheduler.h"
-#include "fiber.h"
+#include "scheduler.hh"
 
 #include <functional>
 #include <cassert>
+
+#include "fiber.hh"
 
 Scheduler::Scheduler() : fid_(0), current_fid_(0) {}
 

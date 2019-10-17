@@ -1,8 +1,8 @@
-#include "fiber.h"
+#include "fiber.hh"
 
 #include <cassert>
 
-#include "scheduler.h"
+#include "scheduler.hh"
 
 Fiber::Fiber(Scheduler &scheduler, Event event)
     : status_(Status::kReady), scheduler_(scheduler), event_(event)
