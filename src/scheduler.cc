@@ -19,8 +19,8 @@ void Scheduler::main(Fiber *fiber)
 {
 	fiber->run();
 	fiber->status_ = Fiber::Status::kDead;
-	fiber->scheduler_.current_fid_ = 0;
-	fiber->scheduler_.RemoveFiber(fiber);
+	fiber->scheduler_->current_fid_ = 0;
+	fiber->scheduler_->RemoveFiber(fiber);
 }
 
 void Scheduler::Yield()

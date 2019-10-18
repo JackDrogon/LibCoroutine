@@ -32,8 +32,8 @@ void bar()
 
 void run()
 {
-	Fiber f1(sche, foo);
-	Fiber f2(sche, bar);
+	Fiber f1(&sche, foo);
+	Fiber f2(&sche, bar);
 
 	cout << "main start" << endl;
 	while (f1.Status() && f2.Status()) {

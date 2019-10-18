@@ -4,21 +4,21 @@
 
 #include "scheduler.hh"
 
-Fiber::Fiber(Scheduler &scheduler, Event event)
+Fiber::Fiber(Scheduler *scheduler, Event event)
     : status_(Status::kReady), scheduler_(scheduler), event_(event)
 {
 	assert(event != nullptr);
 
-	scheduler_.addFiber(this);
+	scheduler_->addFiber(this);
 }
 
-Fiber::~Fiber() { scheduler_.RemoveFiber(this); }
+Fiber::~Fiber() { scheduler_->RemoveFiber(this); }
 
 bool Fiber::Status() { return status_ != Status::kDead; }
 
 void Fiber::Resume()
 {
-	assert(scheduler_.current_fid_ == 0);
+	assert(scheduler_->current_fid_ == 0);
 
 	switch (status_) {
 	case Status::kReady:
@@ -33,7 +33,7 @@ void Fiber::Resume()
 		[[fallthrough]];
 
 	case Status::kSuspend:
-		scheduler_.current_fid_ = fid_;
+		scheduler_->current_fid_ = fid_;
 		swapcontext(main_context_, &context_);
 		break;
 

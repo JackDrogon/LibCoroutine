@@ -17,7 +17,7 @@ public:
 	enum class Status { kDead, kReady, kRunning, kSuspend };
 	using Event = std::function<void()>;
 
-	Fiber(Scheduler &scheduler, Event event);
+	Fiber(Scheduler *scheduler, Event event);
 	~Fiber();
 	COROUTINE_DISALLOW_COPY_AND_ASSIGN(Fiber);
 
@@ -32,7 +32,7 @@ private:
 private:
 	enum Status status_;
 	uint64_t fid_;
-	Scheduler &scheduler_;
+	Scheduler *scheduler_;
 	Event event_;
 	ucontext_t context_;
 	ucontext_t *main_context_;

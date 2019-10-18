@@ -28,6 +28,11 @@ public:
 
 private:
 	void addFiber(Fiber *fiber);
+	void setCurrentFid(uint64_t current_fid) noexcept
+	{
+		current_fid_ = current_fid;
+	}
+
 	static void main(Fiber *fiber);
 
 private:
